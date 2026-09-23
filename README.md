@@ -2,7 +2,7 @@
 
 經典貪吃蛇遊戲，支援手機觸控操作，可加入桌面作為 App 使用。
 
-🎮 **[點此開始遊戲](https://你的帳號.github.io/snake-game/)**
+🎮 **[點此開始遊戲](https://adyuwa.github.io/snake-game/)**
 
 ## 功能
 - 觸控方向鍵 + 滑動手勢控制
