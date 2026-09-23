@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <!-- 禁止使用者縮放，全螢幕體驗 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <!-- PWA -->
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Snake" />
+  <meta name="theme-color" content="#0d1117" />
+  <meta name="description" content="經典貪吃蛇遊戲，支援觸控操作，可加入手機桌面" />
+  <!-- Manifest -->
+  <link rel="manifest" href="manifest.json" />
+  <!-- iOS 圖示 -->
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png" />
+  <title>貪吃蛇 Snake</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- 開始畫面 -->
+  <div id="start-screen" class="screen active">
+    <h1>🐍 貪吃蛇</h1>
+    <p class="subtitle">吃食物讓蛇變長，別碰到牆壁或自己！</p>
+    <div class="difficulty-group">
+      <label>難度</label>
+      <div class="btn-group">
+        <button class="diff-btn active" data-speed="150">慢速</button>
+        <button class="diff-btn" data-speed="100">中速</button>
+        <button class="diff-btn" data-speed="60">快速</button>
+      </div>
+    </div>
+    <div class="controls-hint" id="controls-hint-text">
+      <span>⬆⬇⬅➡ 或 WASD 控制方向</span>
+    </div>
+    <button id="start-btn" class="primary-btn">開始遊戲</button>
+    <div id="best-score-display" class="best-score"></div>
+  </div>
+
+  <!-- 遊戲畫面 -->
+  <div id="game-screen" class="screen">
+    <div id="hud">
+      <div class="hud-item">分數 <span id="score">0</span></div>
+      <div class="hud-item">最高 <span id="best">0</span></div>
+      <div class="hud-item" id="speed-label">速度 慢</div>
+      <!-- 手機暫停按鈕 -->
+      <button id="pause-btn" class="pause-btn" aria-label="暫停">⏸</button>
+    </div>
+    <canvas id="game-canvas"></canvas>
+    <!-- 觸控方向鍵 (JS 動態插入，此處為佔位 safe area) -->
+    <div id="dpad-area"></div>
+  </div>
+
+  <!-- 暫停畫面 -->
+  <div id="pause-screen" class="screen overlay">
+    <div class="modal">
+      <h2>⏸ 暫停</h2>
+      <button id="resume-btn" class="primary-btn">繼續</button>
+      <button id="quit-btn" class="secondary-btn">返回主選單</button>
+    </div>
+  </div>
+
+  <!-- 結束畫面 -->
+  <div id="over-screen" class="screen overlay">
+    <div class="modal">
+      <h2>💀 遊戲結束</h2>
+      <p>本次分數：<strong id="final-score">0</strong></p>
+      <p id="new-best-msg" class="new-best hidden">🎉 新紀錄！</p>
+      <button id="replay-btn" class="primary-btn">再玩一次</button>
+      <button id="menu-btn" class="secondary-btn">返回主選單</button>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+  <script>
+    // 註冊 Service Worker
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js')
+          .then(r => console.log('[SW] 已註冊', r.scope))
+          .catch(e => console.warn('[SW] 註冊失敗', e));
+      });
+    }
+  </script>
+</body>
+</html>

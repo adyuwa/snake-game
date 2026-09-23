@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- 背景 -->
+  <rect width="512" height="512" rx="112" fill="#0d1117"/>
+  <!-- 格子背景 -->
+  <rect x="80" y="80" width="352" height="352" rx="16" fill="#0a0f14"/>
+  <!-- 蛇身體（四節） -->
+  <rect x="120" y="216" width="72" height="72" rx="14" fill="#196127"/>
+  <rect x="200" y="216" width="72" height="72" rx="14" fill="#238636"/>
+  <rect x="280" y="216" width="72" height="72" rx="14" fill="#238636"/>
+  <!-- 蛇頭 -->
+  <rect x="280" y="136" width="80" height="80" rx="18" fill="#3fb950"/>
+  <!-- 眼睛 -->
+  <circle cx="306" cy="158" r="9" fill="#e6edf3"/>
+  <circle cx="342" cy="158" r="9" fill="#e6edf3"/>
+  <circle cx="306" cy="158" r="4.5" fill="#0d1117"/>
+  <circle cx="342" cy="158" r="4.5" fill="#0d1117"/>
+  <!-- 食物 -->
+  <rect x="360" y="216" width="60" height="60" rx="14" fill="#f85149"/>
+  <circle cx="375" cy="231" r="7" fill="rgba(255,255,255,0.3)"/>
+</svg>
